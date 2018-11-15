@@ -20,7 +20,7 @@ module.exports = function validateRegisterInput(data) {
   if (Validator.isEmpty(data.name)) {
     errors.name = "Name Fields is Required";
   }
-  if (!Validator.isEmpty(data.email)) {
+  if (Validator.isEmpty(data.email)) {
     errors.email = "Email Fields is Required";
   }
   if (!Validator.isEmail(data.email)) {
@@ -29,7 +29,7 @@ module.exports = function validateRegisterInput(data) {
   if (Validator.isEmpty(data.password)) {
     errors.password = "Password Fields is Required";
   }
-  if (Validator.isLength(data.password, { min: 6, max: 30 })) {
+  if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
     errors.password = "Password must be at least 6 characters";
   }
 
