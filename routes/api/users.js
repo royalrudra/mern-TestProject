@@ -98,10 +98,13 @@ router.post("/login", (req, res) => {
           avatar: user.avatar
         }; //create jwt tokern
         //Sign Token
+        //payload--- data we want to send
+        //expireIN-- expire after
+        // keys.secretKey-- sectret keys
         jwt.sign(payload, keys.secretKey, { expiresIn: 3600 }, (err, token) => {
           res.json({
             success: true,
-            token: "Bearer " + token
+            token: "Bearer" + token
           });
         }); // expire in 1 hr
       } else {
